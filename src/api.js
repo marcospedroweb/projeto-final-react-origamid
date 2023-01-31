@@ -1,6 +1,7 @@
 export const API_URL = 'https://dogsapi.origamid.dev/json';
 
 export function TOKEN_POST(body) {
+  // Sistema de login, adiquire o token, se o usuario e senha ser valido
   return {
     url: API_URL + '/jwt-auth/v1/token',
     options: {
@@ -13,7 +14,21 @@ export function TOKEN_POST(body) {
   };
 }
 
+export function TOKEN_VALIDATE_POST(token) {
+  // Valida o token passado
+  return {
+    url: API_URL + '/jwt-auth/v1/token/validate',
+    options: {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + token,
+      },
+    },
+  };
+}
+
 export function USER_GET(token) {
+  // Retorna os dados do usuario por meio do token
   return {
     url: API_URL + '/api/user',
     options: {
@@ -21,6 +36,19 @@ export function USER_GET(token) {
       headers: {
         Authorization: 'Bearer ' + token,
       },
+    },
+  };
+}
+
+export function USER_POST(body) {
+  return {
+    url: API_URL + '/api/user',
+    options: {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
     },
   };
 }
