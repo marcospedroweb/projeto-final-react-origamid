@@ -2,8 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
 
+//Cria-se um contexto e exporta-o. Iremos chamar ele nos componente que precisarmos dos dados globais
 export const UserContext = React.createContext();
 
+//Aqui no (UserStorage) é onde ficara e sera exportado toda função e variavel que quero que seja global
 export const UserStorage = ({ children }) => {
   const [data, setData] = React.useState(null);
   const [login, setLogin] = React.useState(null);
